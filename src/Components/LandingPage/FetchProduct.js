@@ -3,11 +3,12 @@
 import axios from "axios";
 import { useEffect } from "react";
 import NumberWithCommas from "./currency";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const { useState } = require("react");
 
 const FetchProduct = (props) => {
+  const router = useRouter();
   const name = props.data.name;
   const category = props.data.category;
 
@@ -24,7 +25,10 @@ const FetchProduct = (props) => {
       setLoading(false);
     });
   };
-  const handleChoice = (value) => {};
+  const handleChoice = (value) => {
+    router.push(`/cart/${value.id}`);
+  };
+
   return (
     <div>
       {loading ? (
@@ -47,32 +51,20 @@ const FetchProduct = (props) => {
               }
             })
             .map((value) => (
-              <Link
-                href={{
-                  pathname: "/cart",
-                  query: {
-                    id: value.id,
-                    nama: value.nama,
-                    harga: value.harga,
-                    foto: value.link,
-                  },
-                }}
+              <div
+                className="border border-1 shadow-lg shadow-black-500/50 rounded-lg overflow-hidden mb-2"
+                key={value.id}
+                onClick={() => handleChoice(value)}
               >
-                <div
-                  className="border border-1 shadow-lg shadow-black-500/50 rounded-lg overflow-hidden mb-2"
-                  key={value.id}
-                  onClick={() => handleChoice(value)}
-                >
-                  <img src={value.link} alt=" " height="50px" />
-                  <h5 className="px-2 font-semibold">{value.nama}</h5>
-                  <p className="px-2">Rp. {NumberWithCommas(value.harga)}</p>
-                  <div className="flex justify-center my-3">
-                    <button className="rounded-full border border-2 border-green-600 py-0 px-5">
-                      + Keranjang
-                    </button>
-                  </div>
+                <img src={value.link} alt=" " height="50px" />
+                <h5 className="px-2 font-semibold">{value.nama}</h5>
+                <p className="px-2">Rp. {NumberWithCommas(value.harga)}</p>
+                <div className="flex justify-center my-3">
+                  <button className="rounded-full border border-2 border-green-600 py-0 px-5">
+                    + Keranjang
+                  </button>
                 </div>
-              </Link>
+              </div>
             ))}
         </div>
       )}
