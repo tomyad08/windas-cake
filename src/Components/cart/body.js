@@ -2,30 +2,32 @@
 import NumberWithCommas from "@/Components/LandingPage/currency";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import {
+  getDataFromLocalStorage,
+  removeDataFromLocalStorage,
+  saveDataToLocalStorage,
+} from "./StoreUtils";
 
 const BodyPage = () => {
   const router = useRouter();
-  const [dataSave, setDataSave] = useState(
-    JSON.parse(localStorage.getItem("data"))
-  );
+  const [dataSave, setDataSave] = useState(getDataFromLocalStorage("cart"));
 
-  if (localStorage.getItem("data") == null) {
-    return localStorage.setItem("data", "[ ]");
+  if (getDataFromLocalStorage("cart") == null) {
+    return saveDataToLocalStorage("cart", []);
   }
   const handleDelete = (value) => {
-    localStorage.clear("data");
     const select = dataSave.filter((data) => {
       if (data.id != value.id) {
         return data;
       }
     });
-    localStorage.setItem("data", "[ ]");
-    localStorage.setItem("data", JSON.stringify(select));
-    setDataSave(JSON.parse(localStorage.getItem("data")));
+    saveDataToLocalStorage("cart", select);
+    const edit = getDataFromLocalStorage("cart");
+    setDataSave(edit);
   };
 
   const handlePesanan = () => {
-    localStorage.clear("data");
+    removeDataFromLocalStorage("cart");
     alert("pesanan telah terkirim");
     router.push("/");
   };

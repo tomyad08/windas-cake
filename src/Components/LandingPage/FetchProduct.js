@@ -56,7 +56,7 @@ const FetchProduct = (props) => {
                 key={value.id}
                 onClick={() => handleChoice(value)}
               >
-                <img src={value.link} alt=" " height="50px" />
+                <img src={value.foto} alt=" " height="50px" />
                 <h5 className="px-2 font-semibold">{value.nama}</h5>
                 <p className="px-2">Rp. {NumberWithCommas(value.harga)}</p>
                 <div className="flex justify-center my-3">

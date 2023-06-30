@@ -6,6 +6,11 @@ import { useState } from "react";
 import BodyPage from "@/Components/cart/body";
 import Navigasi from "@/Components/cart/navigasi";
 import { useRouter } from "next/navigation";
+import {
+  getDataFromLocalStorage,
+  removeDataFromLocalStorage,
+  saveDataToLocalStorage,
+} from "@/Components/cart/StoreUtils";
 
 const BodySlug = ({ params }) => {
   const router = useRouter();
@@ -35,8 +40,8 @@ const BodySlug = ({ params }) => {
 
   const TotalPrice = add * data.harga;
 
-  if (localStorage.getItem("data") == null) {
-    return localStorage.setItem("data", "[ ]");
+  if (getDataFromLocalStorage("cart") == null) {
+    return saveDataToLocalStorage("cart", []);
   }
 
   const handleCart = (e) => {
@@ -48,15 +53,14 @@ const BodySlug = ({ params }) => {
       harga_total: TotalPrice,
     };
 
-    const penyimpanan = JSON.parse(localStorage.getItem("data"));
-    penyimpanan.push(product);
-
-    localStorage.setItem("data", JSON.stringify(penyimpanan));
+    const getData = getDataFromLocalStorage("cart");
+    getData.push(product);
+    saveDataToLocalStorage("cart", getData);
     router.push("/cart");
   };
 
   const handlePesanan = () => {
-    localStorage.clear("data");
+    removeDataFromLocalStorage("cart");
     alert("pesanan telah terkirim");
     router.push("/");
   };
@@ -69,7 +73,7 @@ const BodySlug = ({ params }) => {
           <div className="content w-3/4 mx-auto flex border border-0 bg-green-700 text-white rounded-lg ">
             <div>
               <img
-                src={data.link}
+                src={data.foto}
                 alt=" "
                 className="w-15 h-24 md:h-80 border border-0 rounded-br-full"
               />
