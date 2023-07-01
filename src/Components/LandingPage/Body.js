@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import FetchProduct from "./FetchProduct";
+import Footer from "./Footer";
 
 const BodyPage = () => {
   const [name, setName] = useState(" ");
@@ -95,6 +96,7 @@ const BodyPage = () => {
         </div>
       </div>
       <FetchProduct data={data} />
+      <Footer />
     </div>
   );
 };

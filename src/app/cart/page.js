@@ -3,7 +3,7 @@ import Navigasi from "@/Components/cart/navigasi";
 
 const Cart = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-white absolute h-full w-full">
       <Navigasi />
       <BodyPage />
     </div>

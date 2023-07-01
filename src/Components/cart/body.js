@@ -7,6 +7,7 @@ import {
   removeDataFromLocalStorage,
   saveDataToLocalStorage,
 } from "./StoreUtils";
+import Footer from "../LandingPage/Footer";
 
 const BodyPage = () => {
   const router = useRouter();
@@ -33,8 +34,8 @@ const BodyPage = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-center pt-5 pb-3 text-2xl font-semibold">
+    <div className="bg-white">
+      <h1 className="text-center pt-5 pb-3 text-2xl font-semibold ">
         Review Pembelian
       </h1>
       <p className="mx-5 text-center mb-2">
@@ -68,7 +69,7 @@ const BodyPage = () => {
             ))}
 
             <p
-              className="px-5 py-3 rounded-full bg-green-700 text-center text-white my-5 h-12 inset-x-0 bottom-0"
+              className="px-5 py-3 rounded-full bg-green-700 text-center text-white mt-20 mb-2 inset-x-0"
               onClick={handlePesanan}
             >
               Pesanan Dikirim
@@ -78,6 +79,7 @@ const BodyPage = () => {
       ) : (
         <p className="text-center">belum ada produk masuk keranjang</p>
       )}
+      <Footer />
     </div>
   );
 };

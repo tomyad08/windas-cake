@@ -3,7 +3,6 @@ import NumberWithCommas from "@/Components/LandingPage/currency";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import BodyPage from "@/Components/cart/body";
 import Navigasi from "@/Components/cart/navigasi";
 import { useRouter } from "next/navigation";
 import {
@@ -11,6 +10,8 @@ import {
   removeDataFromLocalStorage,
   saveDataToLocalStorage,
 } from "@/Components/cart/StoreUtils";
+import Footer from "@/Components/LandingPage/Footer";
+import BodyPage from "@/Components/cart/body";
 
 const BodySlug = ({ params }) => {
   const router = useRouter();
@@ -66,7 +67,7 @@ const BodySlug = ({ params }) => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white absolute h-full w-full">
       <Navigasi />
       {data ? (
         <div>
