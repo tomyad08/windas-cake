@@ -1,7 +1,10 @@
 import Link from "next/link";
 const Navigasi = () => {
   return (
-    <div className="bg-green-600 p-5 flex justify-between mb-5">
+    <div
+      className="bg-green-600 p-5 flex justify-between mb-5"
+      style={{ fontFamily: "'Dancing Script', cursive" }}
+    >
       <div>
         <Link href="/">
           <svg

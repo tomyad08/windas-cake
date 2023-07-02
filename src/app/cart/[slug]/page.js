@@ -79,7 +79,7 @@ const BodySlug = ({ params }) => {
                 className="w-15 h-24 md:h-80 border border-0 rounded-br-full"
               />
             </div>
-            <div className="mx-auto my-auto">
+            <div className="mx-auto my-auto pb-2">
               <p className="md:text-2xl">nama: {data.nama}</p>
               <p className="md:text-2xl">
                 harga: Rp. {NumberWithCommas(TotalPrice)}

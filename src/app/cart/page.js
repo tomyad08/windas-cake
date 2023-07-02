@@ -4,8 +4,10 @@ import Navigasi from "@/Components/cart/navigasi";
 const Cart = () => {
   return (
     <div className="bg-white absolute h-full w-full">
-      <Navigasi />
-      <BodyPage />
+      <div className="bg-white">
+        <Navigasi />
+        <BodyPage />
+      </div>
     </div>
   );
 };
