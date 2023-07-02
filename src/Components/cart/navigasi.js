@@ -3,7 +3,7 @@ const Navigasi = () => {
   return (
     <div
       className="bg-green-600 p-5 flex justify-between mb-5"
-      style={{ fontFamily: "'Dancing Script', cursive" }}
+      style={{ fontFamily: "'Rubik', sans-serif" }}
     >
       <div>
         <Link href="/">

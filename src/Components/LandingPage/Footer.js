@@ -61,7 +61,7 @@ const Footer = () => {
         </table>
       </div>
       <div>
-        <h5 className="p-2">Windas Cake</h5>
+        <h5 className="p-2 font-bold">Windas Cake</h5>
       </div>
     </div>
   );
